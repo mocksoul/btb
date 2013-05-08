@@ -65,6 +65,11 @@ setup(
     packages=[
         'btb',
     ],
+    entry_points={
+        'console_scripts': [
+            'btb = btb.__main__:main',
+        ]
+    },
     package_dir={'btb': 'src'},
     cmdclass={
         'test': PyTestCommand,
