@@ -8,7 +8,7 @@ class Version(namedtuple('VersionBase', 'major minor maintainance extra')):
         dotted = '.'.join([str(i) for i in self[:3] if i is not None])
         if not self[3]:
             return dotted
-        return '{}-{}'.format(dotted, self[3])
+        return '{}{}'.format(dotted, self[3])
 
 
 PROGRAM = 'btb'
