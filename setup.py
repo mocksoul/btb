@@ -50,7 +50,7 @@ except ImportError:
 
 setup(
     name='btb',
-    version='dev',
+    version='0.1-dev',
     description='Backup system using rsync and btrfs snapshots',
     long_description=open('README.rst').read(),
     url='http://bitbucket.org/mocksoul/btb',
