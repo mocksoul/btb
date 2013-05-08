@@ -48,9 +48,17 @@ except ImportError:
     from distutils.core import setup  # NOQA
 
 
+try:
+    variables = {}
+    execfile('src/__version__.py', variables, variables)
+    VERSION = str(variables['VERSION'])
+except:
+    VERSION = 'unknown'
+
+
 setup(
     name='btb',
-    version='dev',
+    version=VERSION,
     description='Backup system using rsync and btrfs snapshots',
     long_description=open('README.rst').read(),
     url='http://bitbucket.org/mocksoul/btb',
