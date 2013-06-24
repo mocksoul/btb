@@ -88,9 +88,6 @@ setup(
     author_email='mocksoul@gmail.com',
     license='BSD',
     zip_safe=True,
-    install_requires=[
-        'distribute',
-    ],
     tests_require=['pytest'],
     packages=[
         'btb',
