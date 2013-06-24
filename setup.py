@@ -2,9 +2,8 @@
 
 from __future__ import print_function
 
-try:
-    from setuptools import setup
-    from setuptools.command.test import test as TestCommand
+from ez_setup import use_setuptools
+use_setuptools()
 
 
 from setuptools import setup
