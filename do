@@ -58,4 +58,4 @@ def build():
 if __name__ == '__main__':
     if not os.path.isdir(BUILDDIR):
         os.makedirs(BUILDDIR)
-    main(depsname=os.path.join(BUILDDIR, 'deps'))
+    main(depsname=os.path.join(BUILDDIR, 'deps'), ignoreprefix='.none')
