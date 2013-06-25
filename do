@@ -5,6 +5,8 @@ sys.path.insert(0, 'tools')
 
 from fabricate import run, main
 import os
+import shutil
+import subprocess as subproc
 
 
 BUILDDIR = os.path.abspath('build')
@@ -49,6 +51,34 @@ def sdist():
             )
         ]
     )
+
+
+@task
+def develop():
+    """ Install for development """
+    from distutils import sysconfig
+    pylib = sysconfig.get_python_lib()
+
+    run(
+        'bash', [
+            '-c', subproc.list2cmdline([
+                sys.executable, 'tools/setup.py', 'egg_info', '&&',
+                'rm', '-rf', os.path.join(pylib, 'btb.egg-info'), '&&',
+                'cp', '-r', 'btb.egg-info', pylib, '&&',
+                'rm', '-rf', 'btb.egg-info', '&&',
+                'rm', '-rf', os.path.join(pylib, 'btb'), '&&',
+                'ln', '-sf', os.path.abspath('src'), os.path.join(pylib, 'btb'),
+            ])
+        ]
+    )
+
+
+@task
+def clean():
+    if '-c' not in sys.argv:
+        os.system('"%s" "%s" -c clean' % (sys.executable, __file__))
+    else:
+        shutil.rmtree('build')
 
 
 def build():
