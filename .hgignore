@@ -1,2 +1,3 @@
-^(docs/)?build/
+^(docs/)?(build|dist)/
+^\..*$
 ^\w+\.egg-info/
