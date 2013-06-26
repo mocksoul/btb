@@ -14,7 +14,7 @@ import shutil
 import subprocess as subproc
 
 
-BUILDDIR = os.path.abspath('build')
+BUILDDIR = os.path.abspath('.build')
 
 
 def task(func):
@@ -90,11 +90,13 @@ def clean():
     if '-c' not in sys.argv:
         os.system('"%s" "%s" -c clean' % (sys.executable, __file__))
     else:
-        shutil.rmtree('build')
 
 
 def build():
     return help()
+        if os.path.exists(BUILDDIR):
+            print('deleting ' + BUILDDIR)
+            shutil.rmtree(BUILDDIR)
 
 
 if __name__ == '__main__':
