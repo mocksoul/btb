@@ -87,6 +87,7 @@ def develop():
 
 @task
 def clean():
+    """ Auto-cleanup everything """
     if '-c' not in sys.argv:
         os.system('"%s" "%s" -c clean' % (sys.executable, __file__))
     else:
