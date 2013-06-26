@@ -28,7 +28,14 @@ def task(func):
 @task
 def help():
     """ Show available tasks list """
-    print('Available tasks:')
+
+    from fabricate import _parsed_options
+
+    if _parsed_options is not None:
+        _parsed_options[0].print_help()
+        print('')
+
+    print('Available script functions:')
 
     tasks = []
     for name, meth in sorted(globals().iteritems()):
