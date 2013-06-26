@@ -1,7 +1,15 @@
 #!/usr/bin/env python
 
+import os
 import sys
-sys.path.insert(0, 'tools')
+
+# Ensure this script and its deps will not force python to write bytecode files
+if 'PYTHONDONTWRITEBYTECODE' not in os.environ:
+    os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+    os.execvp(sys.executable, [sys.executable] + sys.argv)
+
+sys.path[0] = os.path.abspath('tools')
+
 
 from fabricate import run, main
 import os
@@ -46,7 +54,7 @@ def sdist():
     run(
         'bash', [
             '-c',
-            '"%s" tools/setup.py sdist --formats=bztar && rm -rf btb.egg-info' % (
+            '"%s" -B tools/setup.py sdist --formats=bztar && rm -rf btb.egg-info' % (
                 sys.executable,
             )
         ]
@@ -62,7 +70,7 @@ def develop():
     run(
         'bash', [
             '-c', subproc.list2cmdline([
-                sys.executable, 'tools/setup.py', 'egg_info', '&&',
+                sys.executable, '-B', 'tools/setup.py', 'egg_info', '&&',
                 'rm', '-rf', os.path.join(pylib, 'btb.egg-info'), '&&',
                 'cp', '-r', 'btb.egg-info', pylib, '&&',
                 'rm', '-rf', 'btb.egg-info', '&&',
