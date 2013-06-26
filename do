@@ -4,12 +4,9 @@ import os
 import sys
 
 # Ensure this script and its deps will not force python to write bytecode files
-if 'PYTHONDONTWRITEBYTECODE' not in os.environ:
-    os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
-    os.execvp(sys.executable, [sys.executable] + sys.argv)
+sys.dont_write_bytecode = True
 
 sys.path[0] = os.path.abspath('tools')
-
 
 from fabricate import run, main
 import os
