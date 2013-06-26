@@ -67,4 +67,4 @@ def create_parser(parser):
 
 
 def main(ctx):
-    raise NotImplementedError('Not yed made')
+    raise NotImplementedError('Not yet made')
