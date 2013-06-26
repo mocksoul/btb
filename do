@@ -70,7 +70,7 @@ def develop():
     run(
         'bash', [
             '-c', subproc.list2cmdline([
-                sys.executable, '-B', 'tools/setup.py', 'egg_info', '&&',
+                sys.executable, '-B', 'tools/setup.py', 'egg_info', 'install_scripts', '&&',
                 'rm', '-rf', os.path.join(pylib, 'btb.egg-info'), '&&',
                 'cp', '-r', 'btb.egg-info', pylib, '&&',
                 'rm', '-rf', 'btb.egg-info', '&&',
