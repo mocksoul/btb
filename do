@@ -90,10 +90,6 @@ def clean():
     if '-c' not in sys.argv:
         os.system('"%s" "%s" -c clean' % (sys.executable, __file__))
     else:
-
-
-def build():
-    return help()
         if os.path.exists(BUILDDIR):
             print('deleting ' + BUILDDIR)
             shutil.rmtree(BUILDDIR)
@@ -102,4 +98,4 @@ def build():
 if __name__ == '__main__':
     if not os.path.isdir(BUILDDIR):
         os.makedirs(BUILDDIR)
-    main(depsname=os.path.join(BUILDDIR, 'deps'), ignoreprefix='.none')
+    main(depsname=os.path.join(BUILDDIR, 'deps'), default='help', ignoreprefix='.none')
