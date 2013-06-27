@@ -6,6 +6,7 @@ from ...__version__ import PROGRAM, VERSION
 
 SUBCOMMANDS = (
     'commands.sync',
+    'commands.archive',
 )
 
 
